@@ -1,11 +1,105 @@
+.hamburger {
+    display : block;
+    z-index : 3;
+    right : 13px;
+    top   : 12px;
+    width : 42px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .hamburger span {
+    display : block;
+    width   : 30px;
+    height  : 2px ;
+    left    : 6px;
+    background : #555;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition   : 0.3s ease-in-out;
+    transition        : 0.3s ease-in-out;
+    margin-bottom: 10%;
+  }
+
+  .hamburger span:nth-child(1) {
+    top: 10px;
+  }
+
+  .hamburger span:nth-child(2) {
+    top: 20px;
+  }
+
+  .hamburger span:nth-child(3) {
+    top: 30px;
+  }
+  
+  /* ナビ開いてる時のボタン */
+  .hamburger.active span:nth-child(1) {
+    top : 16px;
+    left: 6px;
+    background :#fff;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform   : rotate(-45deg);
+    transform        : rotate(-45deg);
+  }
+  
+  .hamburger.active span:nth-child(2),
+  .hamburger.active span:nth-child(3) {
+    top: 16px;
+    background :#fff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform   : rotate(45deg);
+    transform        : rotate(45deg);
+  }
+  
+  nav.globalMenuSp {
+    position: fixed;
+    z-index : 2;
+    top  : 0;
+    left : 0;
+    color: #fff;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  
+  nav.globalMenuSp ul {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+  }
+  
+  nav.globalMenuSp ul li {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    transition: .4s all;
+  }
+  nav.globalMenuSp ul li:last-child {
+    padding-bottom: 0;
+  }
+  nav.globalMenuSp ul li:hover{
+    background :#ddd;
+  }
+  
+  nav.globalMenuSp ul li a {
+    display: block;
+    color: #fff;
+    padding: 0.8em 0;
+    text-decoration :none;
+  }
+  
+  /* このクラスを、jQueryで付与・削除する */
+  nav.globalMenuSp.active {
+    opacity: 100;
+  
+  }
+
 * {
     box-sizing: border-box;
     float: none;
 	position: static;
- }
-
- .an{
-    width: 45%;
  }
 
 img {
@@ -30,7 +124,10 @@ header {
     background-color: rgb(236, 237, 238);
     max-width: 100%;
     box-sizing: border-box;
+    font-size: 2%;
+    justify-content: space-between;
 }
+
 
 header nav {
     margin: 0 0 0 auto;
@@ -62,11 +159,6 @@ header  h2 {
     color: #fff;
 }
 
-.underline{
-    border-bottom: solid 4px #4E65C6;
-    text-underline-offset: 2px;
-}
-
 header img{
     width: 40%;
     height: auto;
@@ -75,7 +167,6 @@ header img{
 .explanation{
     text-align: center;
     height: 250px;
-    background-image: url();
 }
 
 .explanation h1{
@@ -88,9 +179,14 @@ header img{
     font-size: 16px;
 }
 
+.underline{
+    border-bottom: solid 4px #4E65C6;
+    text-underline-offset: 2px;
+}
+
 .topic{
-    padding-left: 70px;
     background-size: cover;
+    justify-content: center;
 }
 
 .topic img{
@@ -106,44 +202,40 @@ header img{
 .topic1{
     text-align: center;
     display: flex;
-    margin-left: 100px;
+    margin: 0 auto;
+    align-items: center;
 }
 
-
 .ellipse{
-    width: 60%;
-    height: 200px;
+    width: 75%;
+    height: 30%;
     border-radius: 50%;
     background-color: #90C0FF;
     box-sizing: border-box;
     position: relative;
     margin: 0 auto;
     box-shadow: 1px 2px 2px gray;
-    margin-bottom: 10px;
+    margin-bottom: 5%;
     font-weight: bold;
 }
 
 .ellipse_inner{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
     text-align: center;
     line-height: 200%;
     color: white;
+    font-size: 16px;
+    padding: 15%;
 }
 
 .topic1 img{
-    margin-left: 70px;
-    width: 40%;
+    width: 58%;
     height: auto;
     object-fit: cover;
 }
 
 .topic2{
     text-align: center;
-    padding: 45px;
+    padding: 10%;
     background-size: cover;
 }
 
@@ -168,24 +260,22 @@ header img{
     margin-left: 80px;
     position: relative;
     margin: 0 auto;
+    max-width: 400px;
+    max-height: 400px;
+    padding: 1%;
 }
 
 .circle_inner{
-    position: absolute;
     text-align: center;
     color: white;
-    top: 5%;
-    left: 30%;
     font-size: 40px;
+    padding-bottom: 0.2%;
 }
 
 .money2{
-    position: absolute;
     text-align: center;
     color: white;
-    top: 80%;
-    left: 30%;
-    font-size: 8px;
+    font-size: 12px;
 }
 
 .element2{
@@ -197,13 +287,15 @@ header img{
 .element2 img{
     width: 15%;
     height: auto;
-    margin-right: 40px;
-    margin-left: auto;
+    margin: 0 auto;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 200px;
 }
 
 .ele2_content{
-    margin-left: auto;
     color: white;
+    margin: 0 auto;
 }
 
 .element3{
@@ -218,16 +310,17 @@ header img{
 }
 
 .element3 img{
-    margin-left: 50px;
+    margin:0 auto;
     width: 40%;
     height: auto;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 600px;
 }
 
 .topic3{
-    padding: 44px;
+    padding: 10%;
     text-align: center;
-    background-image: url();
-    background-size: cover;
 }
 
 .element4{
@@ -238,9 +331,13 @@ header img{
 }
 
 .element4 img {
-    width: 48%;
+    width: 50%;
     height: auto;
-    margin-left: 50px;
+    margin: auto;
+    max-width: 400px;
+    max-height: 400px;
+    margin: 0 auto;
+    min-width: 200px;
 }
 
 .ele4_content{
@@ -259,11 +356,10 @@ header img{
 
 .topic4{
     text-align: center;
-    padding: 60px;
+    padding: 12%;
 }
 
 .element5{
-    display: flex;
     color: white;
     margin :20px auto;
     text-align: center;
@@ -293,20 +389,14 @@ header img{
     padding: 10px;
 }
 
-.teacher h2 {
-    background-color: #2E855E;
-    margin: 0;
-    padding: 10px;
-}
-
 .student_ellipse{
-    width: 80vh;
+    width: 80vw;
     height: 20vw;
     border-radius: 50%;
     background-color: #4E65C6;
     box-sizing: border-box;
     position: relative;
-    margin: 40px auto;
+    margin: 10% auto;
     max-width: 400px;
 }
 
@@ -319,6 +409,12 @@ header img{
     padding-bottom: 100px;
 }
 
+.teacher h2 {
+    background-color: #2E855E;
+    margin: 0;
+    padding: 10px;
+}
+
 
 .teacher_ellipse{
     width: 80vw;
@@ -327,7 +423,7 @@ header img{
     background-color: #2E855E;
     box-sizing: border-box;
     position: relative;
-    margin: 40px auto;
+    margin: 10% auto;
     max-width: 400px;
 }
 
@@ -338,6 +434,7 @@ header img{
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
+    line-height: 140%;
 }
 
 .ele5_content{
@@ -351,10 +448,19 @@ header img{
 
 .qrcode{
     display: flex;
-    width: 100%;
+    width: 80%;
     height: auto;
     text-align: center;
     margin-bottom: 100px;
+    margin: 0 auto;
+}
+
+.iphone{
+    margin: 0 auto;
+}
+
+.google_play{
+    margin: 0 auto;
 }
 
 #play_content{
@@ -401,8 +507,15 @@ header img{
     padding: 20px 0 0 0;
    }
 
+   .yazi{
+    text-align: center;
+   }
+
+
+
    
    @media only screen and (max-width: 599px) {
+
     
     .footer04 .menu {
      justify-content: flex-start;
@@ -419,82 +532,78 @@ header img{
     }
     }
 
-    @media screen and (max-width: 1600px){
-        .topic img{
 
-        }
-        .ellipse{
-            width: 400px;
-            height: 120px;
-        }
+
+
+
+
+    @media screen and (max-width: 1261px){
 
         .ellipse_inner{
-            font-size: 12px;
+            padding: 8%;
+        }
+
+
+        .ele2_content{
+            max-width: 620px;
         }
     }
 
-    @media screen and (max-width: 1261px){
-        .topic1{
-            margin-left: 40px;
-        }
-
+    @media screen and (max-width: 1132px){
+        
         .element2{
             flex-wrap: wrap-reverse;
-            justify-content: center;
+            justify-content: space-around;
+            margin: 0 auto;
+            padding: 5%;
         }
+
+        .element2 img{
+            margin-top: 10%;
+            width: 45%;
+        }
+    }
+
+    @media screen and (max-width: 1110px){
 
         .ele2_content{
             max-width: 620px;
             margin: auto;
         }
 
-    }
-
-    @media screen and (max-width: 1110px){
-
-
-        .element2 img{
-            margin: 0  auto;
-        }
-
-        .element2{
-            text-align: center;
-        }
-
         .element3{
             flex-wrap: wrap;
             justify-content: center;
+            padding: 5%;
         }
 
         .element4{
             flex-wrap: wrap;
             justify-content: center;
+            padding: 5%;
+        }
+
+        .element4 img{
+            width: 95%;
+        }
+
+        .ele4_content{
+            margin: 0 auto;
+        }
+
+        .ele4_content_2{
+            width: 100%;
         }
     }
 
    @media screen and (max-width: 1024px){
 
-    .topic1{
-        margin-left: 20px;
-    }
-
-
-    .element2 img{
-        margin-left: 180px;
+    .topic{
+        padding-left: 0;
     }
 
     .ele2_content{
-        max-width: 620px;
-        margin: auto;
-    }
-
-    .ellipse{
-        width: 350px;
-        height: 105px;
-    }
-
-    .ellipse_inner{
-        font-size: 10px;
+        min-width: 230px;
     }
 
     .student_ellipse{
@@ -508,63 +617,108 @@ header img{
     }
 
     .ele5_content{
-        font-size: 14px;
+        font-size: 16px;
+    }
+
+    .download{
+        margin-bottom: 10%;
+    }
+
+    #disappear{
+        display: none;
     }
    }
    
    @media screen and (max-width:890px){
+    .topic1{
+        display: block;
+    }
+
     .element1{
         flex-wrap: wrap;
         justify-content: center;
-        font-size: 14px;
+        padding: 5%;
+    }
+
+    .ellipse{
+        width: 70%;
+    }
+
+    .ellipse_inner{
+        padding: 10%;
     }
 
     .ele1_content{
         height: auto;
+        margin: 0 auto;
+        width: 90%;
+        max-width: initial;
     }
 
     .price_circle{
         margin-top: 30px;
     }
 
-    .ele5_content{
-        font-size: 12px;
+    .element4 img{
+        margin-top: 5%;
+    }
+
+    .element5{
+        flex-wrap: wrap;
+    }
+
+
+    .ellipse_inner2{
+        width: 80%;
+        margin-bottom: 10%;
+        padding: 7%;
     }
    }
 
    @media screen and (max-width:769px){
-    header img{
-        width: 50%;
-        height: auto;
+
+
+    .total{
+        flex-wrap: wrap;
     }
 
-
-
-    .ellipse{
-        width: 250px;
-        height: 80px;
-        max-width: 500px;
+    .student{
+        width: 100%;
     }
 
-    .ellipse_inner{
-        font-size: 8px;
+    .student_ellipse{
+        width: 80vw;
+        height: 15vh;
     }
 
-    .ele5_content{
-        font-size: 10px;
+    .teacher{
+        width: 100%;
+    }
+
+    .teacher_ellipse{
+        width: 80vw;
+        height: 15vh;
+    }
+
+    .qrcode{
+        flex-wrap: wrap;
+    }
+
+    .google_play{
+        margin-top: 10%;
     }
    }
 
-   @media screen and (max-width:599px){
-    .topic1{
-        display: block;
+
+
+   @media screen and (max-width:450px){
+
+    .topic{
+        font-size: 16px;
     }
 
-    .element3{
-        font-size: 12px;
+    .element2 img{
+        margin-top: 5%;
     }
 
-    .ellipse_inner{
-        font-size: 4px;
-    }
    }
